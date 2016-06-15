@@ -1,163 +1,127 @@
-def listar_quarto():
-    cabecalho = "*** RESIDÊNCIA MANGAJU UFPB RT ***"
-    tam_linha = 45
-    linha = "_" * tam_linha
-    tam_cabecalho = len(cabecalho)
-    tam_margem = (tam_linha - tam_cabecalho) / 2
-    margem = " " * int(tam_margem)
-    titulo = margem + cabecalho + margem
-    print(linha)
-    print(titulo)
-    print("     **********************************")
-    print("     ***  QUARTOS CADASTRADOS       ***")
-    print("     **********************************")
-    print(linha)
-    for i in range(len(quarto)):
-        print(i+1,":"+quarto[i])
+def listar_quartos(quarto):
+    print("**********************************")
+    print("*** RESIDÊNCIA MANGAJU UFPB RT ***")
+    print("**********************************")
+    print("***    QUARTOS CADASTRADOS     ***")
+    print("**********************************")
+    dados = ["Numero","Pessoa","Tipo","Nome"]
+    for i in quarto:
+        for x in range(len(i)):
+            print(" "+dados[x]+": "+i[x])
 
-def quarto_cadastro():
-    cabecalho = "*** RESIDÊNCIA MANGAJU UFPB RT ***"
-    tam_linha = 45
-    linha = "_" * tam_linha
-    tam_cabecalho = len(cabecalho)
-    tam_margem = (tam_linha - tam_cabecalho) / 2
-    margem = " " * int(tam_margem)
-    titulo = margem + cabecalho + margem
-    entrada = "s"
-    while entrada == "s":
-          print(linha)
-          print(titulo)
-          print("     **********************************")
-          print("     ***  CADASTRO DE QUARTOS       ***")
-          print("     **********************************")
-          print(linha)
+def quarto_cadastro(quarto):
+    continuar = "s"
+    while continuar == "s":
+          print("**********************************")
+          print("*** RESIDÊNCIA MANGAJU UFPB RT ***")
+          print("**********************************")
+          print("***     CADASTRO DE QUARTOS    ***")
+          print("**********************************")
           numero = input("NUMERO DE QUARTOS:")
           pessoa = input("QUANTAS PESSOAS POR QUARTO:")
           tipo = input("TIPO DE QUARTO:")
           nome = input("NOME DAS PESSOAS DO QUARTO:")
           quarto.append([numero,pessoa,tipo,nome])
-          continuar = input("Continuar? [S/N]:")
+          continuar = str.lower (input("Continuar? [S/N]:"))
 
-def listar_equipamento():
-    cabecalho = "*** RESIDÊNCIA MANGAJU UFPB RT ***"
-    tam_linha = 45
-    linha = "_" * tam_linha
-    tam_cabecalho = len(cabecalho)
-    tam_margem = (tam_linha - tam_cabecalho) / 2
-    margem = " " * int(tam_margem)
-    titulo = margem + cabecalho + margem
-    print(linha)
-    print(titulo)
-    print("     **********************************")
-    print("     ***  EQUIPAMENTOS CADASTRADOS  ***")
-    print("     **********************************")
-    print(linha)
-    for i in range(len(equipamento)):
-        print(i+1,":"+equipamento[i])
+def listar_equipamento(equipamento):
+    print("**********************************")
+    print("*** RESIDÊNCIA MANGAJU UFPB RT ***")
+    print("**********************************")
+    print("***  EQUIPAMENTOS CADASTRADOS  ***")
+    print("**********************************")
+    dados = ["Nome","Tipo","Funcao","Data","Proprietario"]
+    for i in equipamento:
+        for x in range(len(i)):
+            print(" "+dados[x]+": "+i[x])
 
-def equipamento_cadastro():
-    cabecalho = "*** RESIDÊNCIA MANGAJU UFPB RT ***"
-    tam_linha = 45
-    linha = "_" * tam_linha
-    tam_cabecalho = len(cabecalho)
-    tam_margem = (tam_linha - tam_cabecalho) / 2
-    margem = " " * int(tam_margem)
-    titulo = margem + cabecalho + margem
-    entrada = "s"
-    while entrada == "s":
-          print(linha)
-          print(titulo)
-          print("     **********************************")
-          print("     ***  CADASTRO DE EQUIPAMENTOS  ***")
-          print("     **********************************")
-          print(linha)
+def equipamento_cadastro(equipamento):
+    continuar = "s"
+    while continuar == "s":
+          print("**********************************")
+          print("*** RESIDÊNCIA MANGAJU UFPB RT ***")
+          print("**********************************")
+          print("***  CADASTRO DE EQUIPAMENTOS  ***")
+          print("**********************************")
           nome = input("NOME DO EQUIPAMENTO:")
-          tipo = input("TIPO DE EQUIPAMENTO")
+          tipo = input("TIPO DE EQUIPAMENTO:")
           funcao = input("FUNÇÂO DO EQUIPAMENTO:")
           data = input("DATA DA ENTREGA DO EQUIPAMENTO:")
           proprietario = input("PROPRIETÁRIO DO EQUIPAMENTO:")
           equipamento.append([nome,tipo,funcao,data,proprietario])
-          continuar = input("Continuar? [S/N]:")
+          continuar = str.lower (input("Continuar? [S/N]:"))
 
-def cadastrar_equipamento():
-    cabecalho = "*** RESIDÊNCIA MANGAJU UFPB RT ***"
-    tam_linha = 45
-    linha = "_" * tam_linha
-    tam_cabecalho = len(cabecalho)
-    tam_margem = (tam_linha - tam_cabecalho) / 2
-    margem = " " * int(tam_margem)
-    titulo = margem + cabecalho + margem
+def remove_equipamento(equipamento):
+    data= input("Digite a Data da Entrega do Equipamento a ser Removido:")
+    for i in equipamento:
+        if i [3] == data:
+            equipamento.remove(i)
+            print("Equipamento Removido!")
+            break
+        print("Opção Inválida")
+
+def cadastrar_equipamento(equipamento):
     opcao = ""
-    while opcao != "5":
-         print(linha)
-         print(titulo)
-         print("     **********************************")
-         print("     ***  CADASTRO DE EQUIPAMENTOS  ***")
-         print("     **********************************")
-         print("     [1] EQUIPAMENTOS               ***")
-         print("     **********************************")
-         print("     [2] LISTAR EQUIPAMENTOS        ***")
-         print("     **********************************")
-         print("     [3] QUARTOS                    ***")
-         print("     **********************************")
-         print("     [4] LISTAR QUARTOS             ***")
-         print("     **********************************")
-         print("     [5] SAIR                       ***")
-         print("     **********************************")
-         print(linha)
+    while opcao != "6":
+         print("**********************************")
+         print("*** RESIDÊNCIA MANGAJU UFPB RT ***")
+         print("**********************************")
+         print("***  CADASTRO DE EQUIPAMENTOS  ***")
+         print("**********************************")
+         print("[1] EQUIPAMENTOS               ***")
+         print("**********************************")
+         print("[2] LISTAR EQUIPAMENTOS        ***")
+         print("**********************************")
+         print("[3] REMOVER EQUIPAMENTOS       ***")
+         print("**********************************")
+         print("[4] QUARTOS                    ***")
+         print("**********************************")
+         print("[5] LISTAR QUARTOS             ***")
+         print("**********************************")
+         print("[6] SAIR                       ***")
+         print("**********************************")
          opcao = input("INFORME À OPÇÂO:")
 
          if opcao == "1":
-             equipamento_cadastro()
+             equipamento_cadastro(equipamento)
          
          elif opcao == "2":
-             listar_equipamento()
-     
-         elif opcao == "3":
-             quarto_cadastro()
+             listar_equipamento(equipamento)
 
+         elif opcao == "3":
+             remove_equipamento(equipamento)
+     
          elif opcao == "4":
-             listar_quartos()
+             quarto_cadastro(quarto)
 
          elif opcao == "5":
+             listar_quartos(quarto)
+
+         elif opcao == "6":
              print("Obrigado até a próxima!")
 
          else:
              print("Opçãp Inválida!")
 
-def listar_aluno():
-    cabecalho = "*** RESIDÊNCIA MANGAJU UFPB RT ***"
-    tam_linha = 45
-    linha = "_" * tam_linha
-    tam_cabecalho = len(cabecalho)
-    tam_margem = (tam_linha - tam_cabecalho) / 2
-    margem = " " * int(tam_margem)
-    titulo = margem + cabecalho + margem
-    print(linha)
-    print(titulo)
-    print("     **********************************")
-    print("     ***  RESIDENTES CADASTRADOS    ***")
-    print("     **********************************")
-    print(linha)
-    for i in range(len(nome)):
-        print(i+1,":"+nome[i])
+def listar_aluno(alunos):
+    print("**********************************")
+    print("*** RESIDÊNCIA MANGAJU UFPB RT ***")
+    print("**********************************")
+    print("***   RESIDENTES CADASTRADOS   ***")
+    print("**********************************")
+    dados = ["Nome","Rg","Cpf","Data","Cidade","Estado","Nacionalidade","Matricula","Curso","Fone","Email"]
+    for i in alunos:
+        for x in range(len(i)):
+            print(" "+dados[x]+": "+i[x])
 
-def cadastrar_aluno():
-    cabecalho = "*** RESIDÊNCIA MANGAJU UFPB RT ***"
-    tam_linha = 45
-    linha = "_" * tam_linha
-    tam_cabecalho = len(cabecalho)
-    tam_margem = (tam_linha - tam_cabecalho) / 2
-    margem = " " * int(tam_margem)
-    titulo = margem + cabecalho + margem
-    entrada = "s"
-    while entrada == "s":
-          print(linha)
-          print(titulo)
-          print("     **********************************")
-          print("     ***  CADASTRO DE RESIDENTES    ***")
-          print("     **********************************")
-          print(linha)
+def cadastrar_aluno(alunos):
+    continuar = "s"
+    while continuar == "s":
+          print("**********************************")
+          print("*** RESIDÊNCIA MANGAJU UFPB RT ***")
+          print("**********************************")
+          print("***   CADASTRO DE RESIDENTES   ***")
+          print("**********************************")
           nome = input("NOME DO ALUNO:")
           rg = input("RG:")
           cpf = input("CPF:")
@@ -170,74 +134,72 @@ def cadastrar_aluno():
           curso = input("CURSO:")
           fone = input("FONE:")
           email = input("EMAIL:")
-          nome.append([nome,rg,cpf,data,cidade,estado,nacionalidade,matricula,curso,fone,email])
-          continuar = input("Continuar? [S/N]:")
+          alunos.append([nome,rg,cpf,data,cidade,estado,nacionalidade,matricula,curso,fone,email])
+          continuar = str.lower (input("Continuar? [S/N]:"))
 
-def cadastrar_residente():
-    cabecalho = "*** RESIDÊNCIA MANGAJU UFPB RT ***"
-    tam_linha = 45
-    linha = "_" * tam_linha
-    tam_cabecalho = len(cabecalho)
-    tam_margem = (tam_linha - tam_cabecalho) / 2
-    margem = " " * int(tam_margem)
-    titulo = margem + cabecalho + margem    
+def cadastrar_residente(alunos):
     opcao = ""
-    while opcao != "3":
-         print(linha)
-         print(titulo)
-         print("     **********************************")
-         print("     [1] CADASTRAR ALUNOS           ***")
-         print("     **********************************")
-         print("     [2] LISTAR ALUNOS              ***")
-         print("     **********************************")
-         print("     [3] SAIR                       ***")
-         print("     **********************************")
-         print(linha)
+    while opcao != "4":
+         print("**********************************")
+         print("*** RESIDÊNCIA MANGAJU UFPB RT ***")
+         print("**********************************")
+         print("[1] CADASTRAR ALUNOS           ***")
+         print("**********************************")
+         print("[2] LISTAR ALUNOS              ***")
+         print("**********************************")
+         print("[3] REMOVER ALUNOS             ***")
+         print("**********************************")
+         print("[4] SAIR                       ***")
+         print("**********************************")
          opcao = input("INFORME À OPÇÂO:")
 
          if opcao == "1":
-             cadastrar_aluno()
+             cadastrar_aluno(alunos)
      
          elif opcao == "2":
-             listar_aluno()
+             listar_aluno(alunos)
 
          elif opcao == "3":
+             remove_aluno(alunos)
+
+         elif opcao == "4":
              print("Obrigado até a próxima!")
 
          else:
              print("Opçãp Inválida!")
 
 
-def exibir_menuprincipal():
-    cabecalho = "*** RESIDÊNCIA MANGAJU UFPB RT ***"
-    tam_linha = 45
-    linha = "_" * tam_linha
-    tam_cabecalho = len(cabecalho)
-    tam_margem = (tam_linha - tam_cabecalho) / 2
-    margem = " " * int(tam_margem)
-    titulo = margem + cabecalho + margem
+def remove_aluno(alunos):
+    matricula= input("Digite o numero da Matricula:")
+    for i in alunos:
+        if i [7] == matricula:
+            alunos.remove(i)
+            print("Aluno Removido!")
+            break
+        print("Opção Inválida")
+
+def exibir_menuprincipal(alunos,equipamento):
     opcao = ""
     while opcao != "3":
-         print(linha)
-         print(titulo)
-         print("     **********************************")
-         print("     ****        BEM VINDO          ***")
-         print("     **********************************")
-         print("     [1] CADASTRAR RESIDENTES       ***")
-         print("     **********************************")
-         print("     [2] CADASTRAR EQUIPAMENTOS     ***")
-         print("     **********************************")
-         print("     [3] SAIR                       ***")
-         print("     **********************************")
-         print(linha)
+         print("**********************************")
+         print("*** RESIDÊNCIA MANGAJU UFPB RT ***")
+         print("**********************************")
+         print("****        BEM VINDO          ***")
+         print("**********************************")
+         print("[1] CADASTRAR RESIDENTES       ***")
+         print("**********************************")
+         print("[2] CADASTRAR EQUIPAMENTOS     ***")
+         print("**********************************")
+         print("[3] SAIR                       ***")
+         print("**********************************")
          opcao = input("INFORME À OPÇÂO:")
 
 
          if opcao == "1":
-             cadastrar_residente()
+             cadastrar_residente(alunos)
      
          elif opcao == "2":
-             cadastrar_equipamento()
+             cadastrar_equipamento(equipamento)
 
          elif opcao == "3":
              print("Obrigado até a próxima!")
@@ -248,5 +210,5 @@ def exibir_menuprincipal():
 
 quarto = []
 equipamento = []
-nome = []
-exibir_menuprincipal()
+alunos = []
+exibir_menuprincipal(alunos,equipamento)
